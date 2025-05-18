@@ -1,0 +1,32 @@
+---
+import Container from '@/components/Container.astro';
+import { directus, getAssetUrl } from '@/directus';
+import { readItems } from '@directus/sdk';
+
+const sponsors = await directus.request(readItems('sponsors'));
+---
+
+<section class='full-width'>
+  <Container>
+    <h2 class='font-headings text-2xl font-bold lg:text-3xl lg:tracking-tight'>Unsere Sponsoren</h2>
+    <p class='mt-4 text-lg text-slate-600'>
+      Ohne die Hilfe unserer Sponsoren wäre vieles im swablab nicht möglich. Sie unterstützen uns mit Material,
+      Maschinen, Know-how oder finanziellen Mitteln - und tragen so dazu bei, dass kreative Projekte, offene
+      Werkstattkultur und gemeinsames Lernen wachsen können. Vielen Dank für eure wertvolle Unterstützung!
+    </p>
+  </Container>
+
+  <div
+    class='mt-8 flex flex-wrap justify-center gap-8 overflow-hidden border-y border-slate-100 bg-slate-50 px-4 py-8 md:gap-16'>
+    {
+      sponsors.map((sponsor) => (
+        <a href={sponsor.link} target='_blank' rel='noopener' class='group/link h-20 basis-32'>
+          <img
+            class='size-full object-contain opacity-50 grayscale-100 transition-all hover:opacity-100 hover:grayscale-0 group-[[href]]/link:hover:scale-110'
+            src={getAssetUrl(sponsor.logo).href}
+          />
+        </a>
+      ))
+    }
+  </div>
+</section>

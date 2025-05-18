@@ -1,0 +1,20 @@
+---
+import Banner from '@/components/Banner.astro';
+import CtaJoin from '@/components/CtaJoin.astro';
+import Features from '@/components/Features.astro';
+import Hero from '@/components/Hero.astro';
+import Sponsors from '@/components/Sponsors.astro';
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout>
+  <Hero />
+  <Banner title='Wir sind umgezogen!'>
+    Ihr findet uns jetzt in der <a href='https://www.openstreetmap.org/node/12119224010' target='_blank' rel='noopener'>
+      <address class='inline'>Friedrichstraße 17, 72250 Freudenstadt</address></a
+    >
+  </Banner>
+  <Features />
+  <Sponsors />
+  <CtaJoin />
+</Layout>

@@ -1,0 +1,75 @@
+---
+// @ts-ignore
+import { Icon } from 'astro-icon/components';
+
+const features = [
+  {
+    title: 'Holzwerkstatt',
+    description:
+      'Alles, was du für die Holzbearbeitung brauchst - egal ob kleine Reparaturen oder große Projekte. Du kannst auf hochwertige Maschinen zurückgreifen: Tischkreissäge, Abricht- und Dickenhobel, Kappsäge, Tischbohrmaschine, Schleifmaschinen, eine Flachdübelfräse und flexible mobile Werkbänke stehen dir zur Verfügung. Ideal für Möbelbau, DIY-Projekte oder Upcycling.',
+    icon: 'bxs:tree-alt',
+  },
+  {
+    title: 'Elektronik-Labor',
+    description:
+      'Löten, experimentieren oder eigene Schaltungen entwickeln, hier bist du in unserem Elektronikbereich genau richtig. Neben professionellen Lötstationen für feine SMD- oder klassische THT-Bauteile, Oszilloskopen, Labornetzteilen und Multimetern gibt`s ein gut sortiertes Lager an Bauteilen, Kabeln und Tools.',
+    icon: 'bxs:bolt',
+  },
+  {
+    title: '3D-Druck & CAD',
+    description:
+      'Du willst eigene Designs in die Realität holen? Mit unseren FDM-3D-Druckern kannst du präzise Bauteile, Prototypen oder kreative Objekte einfach umsetzen. Wir unterstützen dich bei der Vorbereitung deiner Dateien (STL, OBJ etc.) und beraten dich bei Materialwahl und Druckeinstellungen.',
+    icon: 'bx:cube',
+  },
+  {
+    title: 'CNC- & Laserbearbeitung',
+    description:
+      'Unsere Mostly-Printed-CNC (MPCNC) eignet sich ideal zum Fräsen von Holz, Acryl und anderen weichen Materialien - präzise und computergesteuert auf einem Bauraum von 600x400mm. Für Gravuren und feine Schnitte stehen dir außerdem ein Diodenlaser sowie ein 40W CO₂-Laser zur Verfügung. Damit kannst du personalisierte Bauteile, Schriftzüge oder komplexe Formen schnell und exakt umsetzen.',
+    icon: 'bx:cog',
+  },
+  {
+    title: 'Know-how & Community',
+    description:
+      'Eine lebendige Community aus kreativen Menschen mit ganz unterschiedlichen Hintergründen - von Hobbybastler:innen bis zu erfahrenen Profis. Bei uns wird Wissen offen geteilt, und jede:r kann von anderen lernen.',
+    icon: 'bx:group',
+  },
+  {
+    title: 'Nachhaltigkeit & Mitmachen',
+    description:
+      'Wir glauben an Reparieren statt Wegwerfen, gemeinsames Nutzen statt Besitzen - und an die Kraft von Projekten, die Menschen zusammenbringen. Deshalb ist das swablab ein gemeinnütziger Verein, offen für alle, die mitmachen wollen.',
+    icon: 'bx:leaf',
+  },
+];
+---
+
+<div class:list={[Astro.props.class]}>
+  <div>
+    <h2 class='font-headings text-4xl font-bold lg:text-5xl lg:tracking-tight'>
+      Alles was du brauchst, um dein Projekt zu verwirklichen
+    </h2>
+    <p class='mt-4 text-lg text-slate-600'>
+      Egal ob du ein Möbelstück bauen, ein Elektronikprojekt umsetzen oder ein 3D-Modell drucken willst - im
+      <span
+        class='font-headings after:bg-brand-200 text-brand-950 relative isolate px-2 py-1 text-xl font-bold after:absolute after:inset-0 after:-z-10 after:-skew-2 after:rounded'>
+        swablab
+      </span> findest du den Raum, das Werkzeug und die Community, um deine Ideen Wirklichkeit werden zu lassen. Bei uns
+      kannst du lernen, experimentieren und dich mit Gleichgesinnten austauschen.
+    </p>
+  </div>
+
+  <div class='mt-16 grid gap-16 lg:grid-cols-2 2xl:grid-cols-3'>
+    {
+      features.map((item) => (
+        <div class='flex items-start gap-4'>
+          <div class='bg-brand-200 grid size-[1lh] shrink-0 place-items-center rounded-full text-lg'>
+            {item.icon && <Icon class='text-brand-950' name={item.icon} />}
+          </div>
+          <div>
+            <h3 class='font-headings text-lg font-semibold'>{item.title}</h3>{' '}
+            <p class='mt-2 leading-relaxed text-slate-500'>{item.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

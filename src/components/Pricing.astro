@@ -1,0 +1,28 @@
+---
+import PricingCard from './PricingCard.astro';
+import Link from './ui/link.astro';
+---
+
+<div class='flex flex-col-reverse gap-8 md:flex-row'>
+  <PricingCard
+    name='Schnupper-Tarif'
+    price='9€ / Tag'
+    benefits={[
+      'Zugang zu Werkstatt und Maschinen für einen Tag',
+      'Individuelle Maschinen-Unterweisung',
+      'Perfekt für einzelne Projekte',
+    ]}>
+    <Link href='#' style='outline'>Kontakt</Link>
+  </PricingCard>
+  <PricingCard
+    name='Mitgliedschaft'
+    price='16€ / Monat'
+    benefits={[
+      'Volle Nutzung der Werkstatt zu den Öffnungszeiten',
+      'Teilnahme an internen Projekten und Events',
+      'Lagerplatz für eigene Projekte',
+      'Zugang zur Community & Know-how-Austausch',
+    ]}>
+    <Link href='#'>Zum Mitgliedsantrag</Link>
+  </PricingCard>
+</div>

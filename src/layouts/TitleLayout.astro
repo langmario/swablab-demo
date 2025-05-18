@@ -1,0 +1,16 @@
+---
+import Layout, { type Props as LayoutProps } from './Layout.astro';
+import Sectionhead from '@/components/SectionHead.astro';
+
+interface Props extends LayoutProps {
+  description?: string;
+}
+---
+
+<Layout {...Astro.props}>
+  <Sectionhead>
+    <Fragment slot='title'>{Astro.props.title}</Fragment>
+    <Fragment slot='desc'>{Astro.props.description}</Fragment>
+  </Sectionhead>
+  <slot />
+</Layout>

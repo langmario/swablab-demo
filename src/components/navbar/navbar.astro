@@ -1,0 +1,76 @@
+---
+import Container from '@/components/Container.astro';
+import Link from '@/components/ui/link.astro';
+import Dropdown from './dropdown.astro';
+import { Astronav, MenuItems, MenuIcon } from 'astro-navbar';
+import Logo from '@/assets/swablab-light.png';
+
+const menuitems = [
+  {
+    title: 'Über uns',
+    path: '/ueber-uns',
+  },
+  {
+    title: 'Werkstatt',
+    path: '/werkstatt',
+    children: [
+      { title: 'Holzbereich', path: '/werkstatt#holzbereich' },
+      { title: 'Elektronik & Prototyping', path: '/werkstatt#elektronik-prototyping' },
+      { title: 'CNC & Laser', path: '/werkstatt#cnc-laser' },
+    ],
+  },
+  {
+    title: 'Kontakt',
+    path: '/kontakt',
+  },
+  {
+    title: 'Wiki',
+    path: 'https://wiki.swablab.de',
+  },
+];
+---
+
+<Container class:list={['w-full', Astro.props.class]}>
+  <header class='my-5 flex flex-col items-center justify-between lg:flex-row'>
+    <Astronav>
+      <div class='flex w-full items-center justify-between lg:w-auto'>
+        <a href='/' class='flex items-center'>
+          <img src={Logo.src} class='size-16 object-contain' />
+          <span class='font-headings text-gray-600'>swablab</span>
+        </a>
+        <div class='block lg:hidden'>
+          <MenuIcon class='h-4 w-4 text-gray-800' />
+        </div>
+      </div>
+      <MenuItems class='mt-2 hidden w-full lg:mt-0 lg:flex lg:w-auto'>
+        <ul class='flex flex-col lg:flex-row lg:gap-3'>
+          {
+            menuitems.map((item, index) => (
+              <>
+                {item.children && (
+                  <Dropdown title={item.title} children={item.children} lastItem={index === menuitems.length - 1} />
+                )}
+
+                {!item.children && (
+                  <li>
+                    <a href={item.path} class='flex items-center py-2 text-gray-600 hover:text-gray-900 lg:px-3'>
+                      <span> {item.title}</span>
+                    </a>
+                  </li>
+                )}
+              </>
+            ))
+          }
+        </ul>
+        <div class='mt-3 flex items-center gap-4 lg:hidden'>
+          <Link href='/mitmachen' size='md' block>Mitmachen</Link>
+        </div>
+      </MenuItems>
+    </Astronav>
+    <div>
+      <div class='hidden items-center gap-4 lg:flex'>
+        <Link href='/mitmachen' size='md'>Mitmachen</Link>
+      </div>
+    </div>
+  </header>
+</Container>

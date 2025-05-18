@@ -1,0 +1,19 @@
+---
+export interface Props {
+  firstname: string;
+  img: string;
+  class?: string;
+}
+---
+
+<div
+  class:list={[
+    'relative overflow-hidden rounded-4xl shadow-lg/30 transition-all hover:-translate-y-2 hover:shadow-xl/30',
+    Astro.props.class,
+  ]}>
+  <img class='w-full' src={Astro.props.img} />
+  <div
+    class='font-headings pointer-events-none absolute right-0 bottom-0 left-0 flex h-12 flex-col justify-end bg-gradient-to-t from-slate-950 to-transparent px-4 py-2 text-center font-bold text-white'>
+    {Astro.props.firstname}
+  </div>
+</div>

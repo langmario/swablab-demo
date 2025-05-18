@@ -1,0 +1,28 @@
+---
+import Pricing from "@/components/Pricing.astro";
+import Link from "@/components/ui/link.astro";
+import TitleLayout from "@/layouts/TitleLayout.astro";
+---
+
+<TitleLayout
+  title="Mitmachen"
+  description="Du hast Lust zu tüfteln, zu bauen oder einfach mal auszuprobieren, was mit 3D-Druck, Elektronik, Holz oder CNC alles möglich ist? Dann bist du bei uns genau richtig! Im swablab kannst du auf viele verschiedene Arten mitmachen - regelmäßig als Mitglied oder ganz flexibel zum Reinschnuppern.">
+  <Pricing />
+  <section>
+    <h2 class="font-headings text-2xl font-bold">Fördermitgliedschaft</h2>
+    <p class="mt-1 text-lg text-slate-500">
+      Für alle, die unsere Arbeit unterstützen möchten - auch ohne
+      Werkstattnutzung.
+    </p>
+    <p class="mt-4">
+      Mit einer Fördermitgliedschaft unterstützt du das swablab finanziell -
+      ganz ohne selbst aktiv die Werkstatt zu nutzen. Ob als Privatperson,
+      Unternehmen oder Organisation: Deine regelmäßige Unterstützung hilft uns,
+      Werkzeuge instand zu halten, Bildungsangebote umzusetzen und einen
+      offenen, kreativen Ort für alle zu schaffen. Du wirst Teil der Community,
+      bekommst Einblicke in laufende Projekte und wirst zu besonderen Events
+      eingeladen.
+    </p>
+    <Link href="#" class="mt-4 inline-block" style="outline">Zum Antrag</Link>
+  </section>
+</TitleLayout>

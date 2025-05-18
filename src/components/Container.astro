@@ -1,0 +1,49 @@
+---
+export interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+}
+const { as, class: className } = Astro.props;
+const Tag = as ?? "div";
+---
+
+<Tag class:list={["content-grid", className]}>
+  <slot />
+</Tag>
+
+<style>
+  .content-grid {
+    --padding-inline: calc(var(--spacing) * 8);
+    --content-max-width: 70rem;
+    --breakout-max-width: 85rem;
+
+    --breakout-size: calc(
+      (var(--breakout-max-width) - var(--content-max-width)) / 2
+    );
+
+    display: grid;
+    grid-template-columns:
+      [full-width-start] minmax(var(--padding-inline), 1fr)
+      [breakout-start] minmax(0, var(--breakout-size))
+      [content-start] min(
+        100% - (var(--padding-inline) * 2),
+        var(--content-max-width)
+      )
+      [content-end]
+      minmax(0, var(--breakout-size)) [breakout-end]
+      minmax(var(--padding-inline), 1fr) [full-width-end];
+  }
+
+  .content-grid > :global(:not(.breakout, .full-width)),
+  .full-width > :global(:not(.breakout, .full-width)) {
+    grid-column: content;
+  }
+
+  .content-grid > :global(.breakout) {
+    grid-column: breakout;
+  }
+
+  .content-grid > :global(.full-width) {
+    grid-column: full-width;
+  }
+</style>
